@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fira Sans", sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #1e1e1e, #444444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.clock-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12rem;
+    width: 30rem;
+    border-radius: 20px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-size: 6rem;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.clock {
+    transform-style: preserve-3d;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: colorChange 10s infinite;
+}
+
+.clock::before {
+    content: attr(data-time);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    color: rgba(255, 255, 255, 0.3);
+    transform: translateZ(-10px);
+    text-shadow: none;
+    font-size: 6rem;
+}
+
+.clock-wrapper:hover {
+    transform: rotateX(10deg) rotateY(10deg);
+}
+
+@keyframes colorChange {
+    0% { color: #ffffff; }
+    25% { color: #ff6f61; }
+    50% { color: #ffa600; }
+    75% { color: #43c0ff; }
+    100% { color: #ffffff; }
+}
